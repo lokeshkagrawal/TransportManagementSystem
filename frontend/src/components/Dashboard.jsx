@@ -154,7 +154,7 @@ function Dashboard({ setIsAuthenticated }) {
   return (
     <div className="app">
       {/* Sidebar */}
-      {!sidebarCollapsed && window.innerWidth <= 768 && (
+      {!sidebarCollapsed  && (
         <div
           className="sidebar-overlay"
           onClick={() => setSidebarCollapsed(true)}
