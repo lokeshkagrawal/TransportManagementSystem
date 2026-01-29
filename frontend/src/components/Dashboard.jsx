@@ -44,12 +44,15 @@ function Dashboard({ setIsAuthenticated }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Mobile पर page load होते ही sidebar close रखो
     if (window.innerWidth <= 768) {
       setSidebarCollapsed(true);
     }
   }, []);
-
+  const closeMobileMenu = () => {
+    if (window.innerWidth <= 768) {
+      setSidebarCollapsed(true);
+    }
+  };
   // Debounce search input to reduce API calls (Performance optimization)
   const debouncedSearchTerm = useDebounce(searchInput, 300);
 
@@ -185,9 +188,7 @@ function Dashboard({ setIsAuthenticated }) {
           <a href="#shipments" className="nav-item"
             onClick={(e) => {
               e.preventDefault();
-              if (window.innerWidth <= 768) {
-                setSidebarCollapsed(true);
-              }
+              closeMobileMenu();
             }}
           >
             <Package />
@@ -201,9 +202,7 @@ function Dashboard({ setIsAuthenticated }) {
                 e.preventDefault();
                 setFilters({ status: '', carrier: '' });
                 setPagination({ after: null, before: null });
-                if (window.innerWidth <= 768) {
-                  setSidebarCollapsed(true);
-                }
+                closeMobileMenu();
               }}
             >
               All Shipments
@@ -215,9 +214,7 @@ function Dashboard({ setIsAuthenticated }) {
                 e.preventDefault();
                 setFilters({ status: 'PENDING', carrier: '' });
                 setPagination({ after: null, before: null });
-                if (window.innerWidth <= 768) {
-                  setSidebarCollapsed(true);
-                }
+                closeMobileMenu();
               }}
             >
               Pending
@@ -229,9 +226,7 @@ function Dashboard({ setIsAuthenticated }) {
                 e.preventDefault();
                 setFilters({ status: 'IN_TRANSIT', carrier: '' });
                 setPagination({ after: null, before: null });
-                if (window.innerWidth <= 768) {
-                  setSidebarCollapsed(true);
-                }
+                closeMobileMenu();
               }}
             >
               In Transit
@@ -243,9 +238,7 @@ function Dashboard({ setIsAuthenticated }) {
                 e.preventDefault();
                 setFilters({ status: 'DELIVERED', carrier: '' });
                 setPagination({ after: null, before: null });
-                if (window.innerWidth <= 768) {
-                  setSidebarCollapsed(true);
-                }
+                closeMobileMenu();
               }}
             >
               Delivered
