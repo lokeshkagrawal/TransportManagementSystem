@@ -89,7 +89,7 @@ npm --version   # v8 or higher
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/tms-app.git
+git clone https://github.com/lokeshkagrawal/TransportManagementSystem.git
 cd tms-app
 ```
 
@@ -141,7 +141,7 @@ npm run dev
    - **Start Command**: `npm start`
    - **Instance Type**: Free
 5. Click "Create Web Service"
-6. Copy your backend URL (e.g., `https://tms-backend-xxx.onrender.com`)
+6. Copy your backend URL (e.g., `https://transportmanagementsystem-308r.onrender.com/`)
 
 #### Heroku (Alternative)
 ```bash
@@ -178,7 +178,7 @@ railway up
    - **Key**: `VITE_GRAPHQL_URL`
    - **Value**: Your backend URL + `/graphql` (e.g., `https://tms-backend-xxx.onrender.com/graphql`)
 6. Click "Deploy site"
-7. Your app will be live at `https://your-app.netlify.app`
+7. Your app will be live at `https://transportmanagesystem.netlify.app/`
 
 #### Vercel (Alternative)
 ```bash
