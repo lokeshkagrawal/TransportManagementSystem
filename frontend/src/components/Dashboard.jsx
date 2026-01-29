@@ -182,7 +182,14 @@ function Dashboard({ setIsAuthenticated }) {
             <span>Dashboard</span>
           </a>
 
-          <a href="#shipments" className="nav-item">
+          <a href="#shipments" className="nav-item"
+            onClick={(e) => {
+              e.preventDefault();
+              if (window.innerWidth <= 768) {
+                setSidebarCollapsed(true);
+              }
+            }}
+          >
             <Package />
             <span>Shipments</span>
           </a>
