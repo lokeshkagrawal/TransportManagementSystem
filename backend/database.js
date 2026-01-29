@@ -1,28 +1,37 @@
 import bcrypt from 'bcryptjs';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Mock Users Database
-export const users = [
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Data file path
+const dataPath = path.join(__dirname, 'data.json');
+
+// Initialize data with mock data
+const initialData = {
+  users: [
+    {
+      id: '1',
+      email: 'admin@tms.com',
+      password: bcrypt.hashSync('admin123', 10),
+      name: 'Admin User',
+      role: 'ADMIN'
+    },
+    {
+      id: '2',
+      email: 'employee@tms.com',
+      password: bcrypt.hashSync('employee123', 10),
+      name: 'John Employee',
+      role: 'EMPLOYEE'
+    }
+  ],
+ shipments : [
   {
     id: '1',
-    email: 'admin@tms.com',
-    password: bcrypt.hashSync('admin123', 10), // Password: admin123
-    name: 'Admin User',
-    role: 'ADMIN'
-  },
-  {
-    id: '2',
-    email: 'employee@tms.com',
-    password: bcrypt.hashSync('employee123', 10), // Password: employee123
-    name: 'John Employee',
-    role: 'EMPLOYEE'
-  }
-];
-
-// Mock Shipments Database
-export const shipments = [
-  {
-    id: '1',
-    shipperName: 'Amazon Logistics',
+    shipperName: 'Amazon lokesh Logistics',
     carrierName: 'FedEx Express',
     pickupLocation: {
       address: '410 Terry Ave N',
@@ -404,13 +413,57 @@ export const shipments = [
     updatedAt: '2026-01-27T10:30:00Z',
     createdBy: '1'
   }
-];
+],
+  shipmentIdCounter: 13
+};
 
-// Helper functions for data management
-let shipmentIdCounter = 13;
+// Load or initialize data
+let data = { users: [], shipments: [], shipmentIdCounter: 1 };
+
+const loadData = () => {
+  try {
+    if (fs.existsSync(dataPath)) {
+      const fileData = fs.readFileSync(dataPath, 'utf8');
+      data = JSON.parse(fileData);
+      console.log(`📦 Loaded ${data.shipments.length} shipments and ${data.users.length} users from file`);
+    } else {
+      console.log('⚠️  data.json not found, creating with initial data...');
+      data = initialData;
+      saveData();
+      console.log('✅ data.json created with sample data');
+    }
+  } catch (error) {
+    console.error('❌ Error loading data:', error.message);
+    console.log('Creating new data file with initial data...');
+    data = initialData;
+    saveData();
+  }
+};
+
+// Save data to file
+const saveData = () => {
+  try {
+    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
+    console.log('✅ Data saved to file');
+  } catch (error) {
+    console.error('❌ Error saving data:', error.message);
+  }
+};
+
+// Initialize data on module load
+loadData();
+
+// Export data arrays
+export let users = data.users;
+export let shipments = data.shipments;
+
+// Helper functions
+let shipmentIdCounter = data.shipmentIdCounter || 13;
 
 export const generateShipmentId = () => {
-  return String(shipmentIdCounter++);
+  const id = String(shipmentIdCounter++);
+  data.shipmentIdCounter = shipmentIdCounter;
+  return id;
 };
 
 export const findUserById = (id) => {
@@ -437,7 +490,11 @@ export const createShipment = (shipmentData, userId) => {
     updatedAt: new Date().toISOString(),
     createdBy: userId
   };
+  
   shipments.push(newShipment);
+  data.shipments = shipments; // Sync with data object
+  saveData(); // ✅ Save to file
+  
   return newShipment;
 };
 
@@ -450,6 +507,10 @@ export const updateShipment = (id, updates) => {
     ...updates,
     updatedAt: new Date().toISOString()
   };
+  
+  data.shipments = shipments; // Sync with data object
+  saveData(); // ✅ Save to file
+  
   return shipments[index];
 };
 
@@ -458,5 +519,8 @@ export const deleteShipment = (id) => {
   if (index === -1) return false;
   
   shipments.splice(index, 1);
+  data.shipments = shipments; // Sync with data object
+  saveData(); // ✅ Save to file
+  
   return true;
 };
