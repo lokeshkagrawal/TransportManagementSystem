@@ -180,16 +180,13 @@ function Dashboard({ setIsAuthenticated }) {
         <nav className="sidebar-nav">
           <div className="nav-section">Main Menu</div>
 
-          <a href="#dashboard" className="nav-item active">
+          <a href="#dashboard" className="nav-item active" onClick={closeMobileMenu}>
             <BarChart3 />
             <span>Dashboard</span>
           </a>
 
           <a href="#shipments" className="nav-item"
-            onClick={(e) => {
-              e.preventDefault();
-              closeMobileMenu();
-            }}
+            onClick={closeMobileMenu}
           >
             <Package />
             <span>Shipments</span>
@@ -245,12 +242,12 @@ function Dashboard({ setIsAuthenticated }) {
             </a>
           </div>
 
-          <a href="#carriers" className="nav-item">
+          <a href="#carriers" className="nav-item" onClick={closeMobileMenu}>
             <Truck />
             <span>Carriers</span>
           </a>
 
-          <a href="#reports" className="nav-item">
+          <a href="#reports" className="nav-item" onClick={closeMobileMenu}>
             <FileText />
             <span>Reports</span>
           </a>
@@ -259,12 +256,12 @@ function Dashboard({ setIsAuthenticated }) {
             <>
               <div className="nav-section">Admin</div>
 
-              <a href="#users" className="nav-item">
+              <a href="#users" className="nav-item" onClick={closeMobileMenu}>
                 <Users />
                 <span>Users</span>
               </a>
 
-              <a href="#settings" className="nav-item">
+              <a href="#settings" className="nav-item" onClick={closeMobileMenu}>
                 <Settings />
                 <span>Settings</span>
               </a>
@@ -303,9 +300,7 @@ function Dashboard({ setIsAuthenticated }) {
                 onClick={() => {
                   setFilters({ status: '', carrier: '' });
                   setPagination({ after: null, before: null });
-                  if (window.innerWidth <= 768) {
-                    setSidebarCollapsed(true);
-                  }
+                  closeMobileMenu();
                 }}
               >
                 All Shipments
@@ -315,9 +310,7 @@ function Dashboard({ setIsAuthenticated }) {
                 onClick={() => {
                   setFilters({ status: 'PENDING', carrier: '' });
                   setPagination({ after: null, before: null });
-                  if (window.innerWidth <= 768) {
-                    setSidebarCollapsed(true);
-                  }
+                  closeMobileMenu();
                 }}
               >
                 Pending
@@ -327,9 +320,7 @@ function Dashboard({ setIsAuthenticated }) {
                 onClick={() => {
                   setFilters({ status: 'IN_TRANSIT', carrier: '' });
                   setPagination({ after: null, before: null });
-                  if (window.innerWidth <= 768) {
-                    setSidebarCollapsed(true);
-                  }
+                  closeMobileMenu();
                 }}
               >
                 In Transit
@@ -339,9 +330,7 @@ function Dashboard({ setIsAuthenticated }) {
                 onClick={() => {
                   setFilters({ status: 'DELIVERED', carrier: '' });
                   setPagination({ after: null, before: null });
-                  if (window.innerWidth <= 768) {
-                    setSidebarCollapsed(true);
-                  }
+                  closeMobileMenu();
                 }}
               >
                 Delivered
@@ -359,9 +348,7 @@ function Dashboard({ setIsAuthenticated }) {
                 onChange={(e) => {
                   setSearchInput(e.target.value);
                   setPagination({ after: null, before: null });
-                  if (window.innerWidth <= 768) {
-                    setSidebarCollapsed(true);
-                  }
+                  closeMobileMenu();
                 }}
               />
             </div>
