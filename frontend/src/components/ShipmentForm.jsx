@@ -206,13 +206,22 @@ function ShipmentForm({ shipment, onClose, refetch }) {
                   onChange={handleChange}
                 >
                   <option value="">Select Carrier</option>
-                  <option value="FedEx Express">FedEx Express</option>
-                  <option value="FedEx Ground">FedEx Ground</option>
-                  <option value="UPS Ground">UPS Ground</option>
-                  <option value="UPS Next Day Air">UPS Next Day Air</option>
                   <option value="DHL Express">DHL Express</option>
                   <option value="DHL International">DHL International</option>
+                  <option value="DHL Medical Express">DHL Medical Express</option>
+                  <option value="FedEx Express">FedEx Express</option>
+                  <option value="FedEx Ground">FedEx Ground</option>
+                  <option value="FedEx Priority">FedEx Priority</option>   
+                  <option value="J.B. Hunt">J.B. Hunt</option>  
+                  <option value="Panalpina Heavy Haul">Panalpina Heavy Haul</option>                                 
+                  <option value="UPS Ground">UPS Ground</option>
+                  <option value="UPS Next Day Air">UPS Next Day Air</option>
                   <option value="USPS Priority">USPS Priority</option>
+                  <option value="UPS Worldwide Express">UPS Worldwide Express</option>
+                  <option value="XPO Logistics">XPO Logistics</option>
+                  
+                  
+                  
                 </select>
                 {errors.carrierName && <span className="error">{errors.carrierName}</span>}
               </div>
