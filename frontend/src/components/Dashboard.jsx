@@ -50,7 +50,6 @@ function Dashboard({ setIsAuthenticated }) {
     }
   }, []);
   const closeMobileMenu = () => {
-    debugger
     if (window.innerWidth <= 768) {
       setSidebarCollapsed(true);
     }
