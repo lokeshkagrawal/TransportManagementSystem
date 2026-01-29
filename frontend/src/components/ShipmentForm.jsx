@@ -5,7 +5,7 @@ import { X } from 'lucide-react';
 
 function ShipmentForm({ shipment, onClose, refetch }) {
   const isEdit = !!shipment;
-  
+
   const [formData, setFormData] = useState({
     shipperName: '',
     carrierName: '',
@@ -111,7 +111,7 @@ function ShipmentForm({ shipment, onClose, refetch }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -167,8 +167,10 @@ function ShipmentForm({ shipment, onClose, refetch }) {
   const loading = creating || updating;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content shipment-form-modal" onClick={(e) => e.stopPropagation()}>
+    // <div className="modal-overlay" onClick={onClose}>
+    //   <div className="modal-content shipment-form-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlay">
+      <div className="modal-content">
         <div className="modal-header">
           <h3>{isEdit ? 'Edit Shipment' : 'Create New Shipment'}</h3>
           <button className="modal-close" onClick={onClose}>

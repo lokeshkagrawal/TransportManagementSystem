@@ -151,6 +151,23 @@ function Dashboard({ setIsAuthenticated }) {
   return (
     <div className="app">
       {/* Sidebar */}
+      {!sidebarCollapsed && window.innerWidth <= 768 && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setSidebarCollapsed(true)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 99,
+            cursor: 'pointer'
+          }}
+        />
+      )}
+
       <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
           <h1>TMS Portal</h1>
