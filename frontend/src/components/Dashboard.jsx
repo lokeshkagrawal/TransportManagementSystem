@@ -48,7 +48,7 @@ function Dashboard({ setIsAuthenticated }) {
       setSidebarCollapsed(true);
     }
   }, []);
-  const closeMobileMenu = () => {
+  const closeMobileMenu = () => {debugger
     if (window.innerWidth <= 768) {
       setSidebarCollapsed(true);
     }
@@ -154,7 +154,7 @@ function Dashboard({ setIsAuthenticated }) {
   return (
     <div className="app">
       {/* Sidebar */}
-      {!sidebarCollapsed  && (
+      {!sidebarCollapsed && window.innerWidth <= 768 && (
         <div
           className="sidebar-overlay"
           onClick={() => setSidebarCollapsed(true)}
