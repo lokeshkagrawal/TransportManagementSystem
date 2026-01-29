@@ -14,7 +14,8 @@ import {
   Settings,
   BarChart3,
   Users,
-  LogOut
+  LogOut,
+  X
 } from 'lucide-react';
 import GridView from './GridView';
 import TileView from './TileView';
@@ -48,7 +49,8 @@ function Dashboard({ setIsAuthenticated }) {
       setSidebarCollapsed(true);
     }
   }, []);
-  const closeMobileMenu = () => {debugger
+  const closeMobileMenu = () => {
+    debugger
     if (window.innerWidth <= 768) {
       setSidebarCollapsed(true);
     }
@@ -173,10 +175,16 @@ function Dashboard({ setIsAuthenticated }) {
 
       <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="sidebar-header">
-          <h1>TMS Portal</h1>
-          <p>Transportation Management</p>
-        </div>
-
+          <div>
+            <h1>TMS Portal</h1>
+            <p>Transportation Management</p>
+          </div>
+          <button
+            className="sidebar-close-btn"
+            onClick={() => setSidebarCollapsed(true)}
+          ><X size={24} />
+          </button>
+          </div>
         <nav className="sidebar-nav">
           <div className="nav-section">Main Menu</div>
 

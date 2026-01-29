@@ -1538,3 +1538,35 @@ body {
     width: 100%;
   }
 }
+/* Sidebar Close Button */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: none; /* Hide on desktop */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s;
+}
+
+.sidebar-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Show close button only on mobile */
+@media (max-width: 768px) {
+  .sidebar-close-btn {
+    display: flex;
+  }
+}
