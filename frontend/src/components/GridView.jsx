@@ -1,12 +1,21 @@
 import React, { memo } from 'react';
-import { Package } from 'lucide-react';
-
+import { useMutation } from '@apollo/client';
+import { Package, Edit, Flag, Trash2 } from 'lucide-react';
+import { DELETE_SHIPMENT } from '../graphql';
 /**
  * GridView Component - Optimized with React.memo
  * 
  * Performance optimization: Only re-renders when data changes
  */
-function GridView({ shipments, onShipmentClick }) {
+function GridView({ shipments, onShipmentClick, onEditClick, refetch }) {
+  const [deleteShipment, { loading: deleting }] = useMutation(DELETE_SHIPMENT, {
+    onCompleted: () => {
+      refetch();
+    },
+    onError: (error) => {
+      alert('Error deleting shipment: ' + error.message);
+    }
+  });
   const getStatusClass = (status) => {
     const statusMap = {
       'PENDING': 'pending',
@@ -37,10 +46,27 @@ function GridView({ shipments, onShipmentClick }) {
     }).format(amount);
   };
 
+  
+  const handleEdit = (e, shipment) => {
+    e.stopPropagation();
+    onEditClick(shipment);
+  };
+
+  const handleFlag = (e, shipment) => {
+    e.stopPropagation();
+    alert(`Shipment ${shipment.trackingNumber} has been flagged for admin review`);
+  };
+
+  const handleDelete = async (e, shipmentId, trackingNumber) => {
+    e.stopPropagation();
+    if (window.confirm(`Are you sure you want to delete shipment ${trackingNumber}?`)) {
+      await deleteShipment({ variables: { id: shipmentId } });
+    }
+  };
   if (!shipments || shipments.length === 0) {
     return (
       <div className="empty-state">
-        <Package />
+        <Package size={120}/>
         <h3>No Shipments Found</h3>
         <p>Try adjusting your filters or create a new shipment</p>
       </div>
@@ -63,6 +89,7 @@ function GridView({ shipments, onShipmentClick }) {
               <th>Weight (lbs)</th>
               <th>Est. Delivery</th>
               <th>Created</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -91,6 +118,32 @@ function GridView({ shipments, onShipmentClick }) {
                 <td>{shipment.weight}</td>
                 <td>{formatDate(shipment.estimatedDelivery)}</td>
                 <td>{formatDate(shipment.createdAt)}</td>
+                <td onClick={(e) => e.stopPropagation()}>
+                  <div className="table-actions-direct">
+                    <button
+                      className="action-btn edit-btn"
+                      onClick={(e) => handleEdit(e, shipment)}
+                      title="Edit"
+                    >
+                      <Edit size={16} />
+                    </button>
+                    <button
+                      className="action-btn flag-btn"
+                      onClick={(e) => handleFlag(e, shipment)}
+                      title="Flag"
+                    >
+                      <Flag size={16} />
+                    </button>
+                    <button
+                      className="action-btn delete-btn"
+                      onClick={(e) => handleDelete(e, shipment.id, shipment.trackingNumber)}
+                      disabled={deleting}
+                      title="Delete"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

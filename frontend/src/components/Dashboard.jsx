@@ -488,6 +488,8 @@ function Dashboard({ setIsAuthenticated }) {
                 <GridView
                   shipments={shipments}
                   onShipmentClick={handleShipmentClick}
+                  onEditClick={handleEditShipment}   // ✅ YE ADD KARO
+                  refetch={refetch}
                 />
               ) : (
                 <TileView

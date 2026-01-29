@@ -1423,3 +1423,82 @@ body {
     width: 100%;
   }
 }
+
+/* Table Actions - Direct Buttons Container */
+.table-actions-direct {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Action Button Base Style */
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+/* Edit Button - Blue */
+.action-btn.edit-btn {
+  color: var(--primary);
+}
+
+.action-btn.edit-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+/* Flag Button - Orange */
+.action-btn.flag-btn {
+  color: var(--warning);
+}
+
+.action-btn.flag-btn:hover {
+  background: rgba(245, 158, 11, 0.1);
+  transform: scale(1.1);
+}
+
+/* Delete Button - Red */
+.action-btn.delete-btn {
+  color: var(--danger);
+}
+
+.action-btn.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(1.1);
+}
+
+/* Disabled State */
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Actions Column Width */
+.grid-table th:last-child,
+.grid-table td:last-child {
+  width: 120px;
+  text-align: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .table-actions-direct {
+    gap: 0.25rem;
+  }
+  
+  .action-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
