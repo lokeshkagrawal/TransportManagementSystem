@@ -43,6 +43,13 @@ function Dashboard({ setIsAuthenticated }) {
   });
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    // Mobile पर page load होते ही sidebar close रखो
+    if (window.innerWidth <= 768) {
+      setSidebarCollapsed(true);
+    }
+  }, []);
+
   // Debounce search input to reduce API calls (Performance optimization)
   const debouncedSearchTerm = useDebounce(searchInput, 300);
 
@@ -152,7 +159,7 @@ function Dashboard({ setIsAuthenticated }) {
 
         <nav className="sidebar-nav">
           <div className="nav-section">Main Menu</div>
-          
+
           <a href="#dashboard" className="nav-item active">
             <BarChart3 />
             <span>Dashboard</span>
@@ -163,46 +170,58 @@ function Dashboard({ setIsAuthenticated }) {
             <span>Shipments</span>
           </a>
           <div className="submenu">
-            <a 
-              href="#all-shipments" 
+            <a
+              href="#all-shipments"
               className="nav-item"
               onClick={(e) => {
                 e.preventDefault();
                 setFilters({ status: '', carrier: '' });
                 setPagination({ after: null, before: null });
+                if (window.innerWidth <= 768) {
+                  setSidebarCollapsed(true);
+                }
               }}
             >
               All Shipments
             </a>
-            <a 
-              href="#pending" 
+            <a
+              href="#pending"
               className="nav-item"
               onClick={(e) => {
                 e.preventDefault();
                 setFilters({ status: 'PENDING', carrier: '' });
                 setPagination({ after: null, before: null });
+                if (window.innerWidth <= 768) {
+                  setSidebarCollapsed(true);
+                }
               }}
             >
               Pending
             </a>
-            <a 
-              href="#in-transit" 
+            <a
+              href="#in-transit"
               className="nav-item"
               onClick={(e) => {
                 e.preventDefault();
                 setFilters({ status: 'IN_TRANSIT', carrier: '' });
                 setPagination({ after: null, before: null });
+                if (window.innerWidth <= 768) {
+                  setSidebarCollapsed(true);
+                }
               }}
             >
               In Transit
             </a>
-            <a 
-              href="#delivered" 
+            <a
+              href="#delivered"
               className="nav-item"
               onClick={(e) => {
                 e.preventDefault();
                 setFilters({ status: 'DELIVERED', carrier: '' });
                 setPagination({ after: null, before: null });
+                if (window.innerWidth <= 768) {
+                  setSidebarCollapsed(true);
+                }
               }}
             >
               Delivered
@@ -222,7 +241,7 @@ function Dashboard({ setIsAuthenticated }) {
           {user?.role === 'ADMIN' && (
             <>
               <div className="nav-section">Admin</div>
-              
+
               <a href="#users" className="nav-item">
                 <Users />
                 <span>Users</span>
@@ -262,38 +281,50 @@ function Dashboard({ setIsAuthenticated }) {
             </button>
 
             <div className="horizontal-menu">
-              <button 
+              <button
                 className={!filters.status ? 'active' : ''}
                 onClick={() => {
                   setFilters({ status: '', carrier: '' });
                   setPagination({ after: null, before: null });
+                  if (window.innerWidth <= 768) {
+                    setSidebarCollapsed(true);
+                  }
                 }}
               >
                 All Shipments
               </button>
-              <button 
+              <button
                 className={filters.status === 'PENDING' ? 'active' : ''}
                 onClick={() => {
                   setFilters({ status: 'PENDING', carrier: '' });
                   setPagination({ after: null, before: null });
+                  if (window.innerWidth <= 768) {
+                    setSidebarCollapsed(true);
+                  }
                 }}
               >
                 Pending
               </button>
-              <button 
+              <button
                 className={filters.status === 'IN_TRANSIT' ? 'active' : ''}
                 onClick={() => {
                   setFilters({ status: 'IN_TRANSIT', carrier: '' });
                   setPagination({ after: null, before: null });
+                  if (window.innerWidth <= 768) {
+                    setSidebarCollapsed(true);
+                  }
                 }}
               >
                 In Transit
               </button>
-              <button 
+              <button
                 className={filters.status === 'DELIVERED' ? 'active' : ''}
                 onClick={() => {
                   setFilters({ status: 'DELIVERED', carrier: '' });
                   setPagination({ after: null, before: null });
+                  if (window.innerWidth <= 768) {
+                    setSidebarCollapsed(true);
+                  }
                 }}
               >
                 Delivered
@@ -311,6 +342,9 @@ function Dashboard({ setIsAuthenticated }) {
                 onChange={(e) => {
                   setSearchInput(e.target.value);
                   setPagination({ after: null, before: null });
+                  if (window.innerWidth <= 768) {
+                    setSidebarCollapsed(true);
+                  }
                 }}
               />
             </div>
@@ -393,7 +427,7 @@ function Dashboard({ setIsAuthenticated }) {
 
             <div className="filter-group">
               <label>Sort By</label>
-              <select 
+              <select
                 value={`${sortConfig.field}-${sortConfig.order.toLowerCase()}`}
                 onChange={handleSortChange}
               >
