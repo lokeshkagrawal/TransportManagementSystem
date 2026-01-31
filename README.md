@@ -117,12 +117,12 @@ npm run dev
 
 ### Admin Account
 - **Email**: `admin@tms.com`
-- **Password**: `admin123`
+- **Password**: `admin@123`
 - **Access**: Full system access, view all shipments, statistics, bulk operations
 
 ### Employee Account
 - **Email**: `employee@tms.com`
-- **Password**: `employee123`
+- **Password**: `employee@123`
 - **Access**: View and manage own shipments only
 
 ## 🌐 Deployment Instructions
@@ -201,7 +201,7 @@ vercel
 **Login:**
 ```graphql
 mutation Login {
-  login(email: "admin@tms.com", password: "admin123") {
+  login(email: "admin@tms.com", password: "admin@123") {
     token
     user {
       id

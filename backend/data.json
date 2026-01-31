@@ -3,14 +3,14 @@
     {
       "id": "1",
       "email": "admin@tms.com",
-      "password": "$2a$10$1dLqg4qKv6V31ZwU4Isee.ksX/tLHOIgJAPBUAkuZ7LnQ5sa0nv1O",
+      "password": "$2a$10$4lDFxYsLwBcltXBIck.6FeS16WUiFtTikg52mPY34BtnQhnk3wIiW",
       "name": "Admin User",
       "role": "ADMIN"
     },
     {
       "id": "2",
       "email": "employee@tms.com",
-      "password": "$2a$10$VcnC/Jy5OlZk3XUyp1SznOTQIP3UmEneuSQhXavEEFvq.lSVAMUyq",
+      "password": "$2a$10$Aun0OE/byvHDeUp1ZxD5QOmTzItYPTsMENN6W/hP6VT8qb7FwQ.Pe",
       "name": "John Employee",
       "role": "EMPLOYEE"
     }

@@ -46,11 +46,11 @@ Server will start at: `http://localhost:4000`
 
 ### Admin Account
 - Email: `admin@tms.com`
-- Password: `admin123`
+- Password: `admin@123`
 
 ### Employee Account
 - Email: `employee@tms.com`
-- Password: `employee123`
+- Password: `employee@123`
 
 ## GraphQL API Endpoints
 
@@ -59,7 +59,7 @@ Server will start at: `http://localhost:4000`
 #### Login
 ```graphql
 mutation Login {
-  login(email: "admin@tms.com", password: "admin123") {
+  login(email: "admin@tms.com", password: "admin@123") {
     token
     user {
       id
@@ -376,7 +376,7 @@ Deploy as a containerized application or serverless function.
 # Login
 curl -X POST http://localhost:4000/graphql \
   -H "Content-Type: application/json" \
-  -d '{"query":"mutation { login(email:\"admin@tms.com\", password:\"admin123\") { token user { name role } } }"}'
+  -d '{"query":"mutation { login(email:\"admin@tms.com\", password:\"admin@123\") { token user { name role } } }"}'
 
 # Get Shipments (with token)
 curl -X POST http://localhost:4000/graphql \

@@ -77,11 +77,11 @@ async function startServer() {
       defaultCredentials: {
         admin: {
           email: 'admin@tms.com',
-          password: 'admin123'
+          password: 'admin@123'
         },
         employee: {
           email: 'employee@tms.com',
-          password: 'employee123'
+          password: 'employee@123'
         }
       }
     });
@@ -91,8 +91,8 @@ async function startServer() {
     console.log(`🚀 TMS GraphQL API Server ready at http://localhost:${PORT}/graphql`);
     console.log(`📊 Health check at http://localhost:${PORT}/health`);
     console.log(`\n📝 Default Login Credentials:`);
-    console.log(`   Admin: admin@tms.com / admin123`);
-    console.log(`   Employee: employee@tms.com / employee123`);
+    console.log(`   Admin: admin@tms.com / admin@123`);
+    console.log(`   Employee: employee@tms.com / employee@123`);
   });
 }
 

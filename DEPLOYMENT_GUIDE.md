@@ -115,7 +115,7 @@ Fill in the following:
 5. Try this query:
 ```graphql
 mutation {
-  login(email: "admin@tms.com", password: "admin123") {
+  login(email: "admin@tms.com", password: "admin@123") {
     token
     user {
       name
@@ -210,7 +210,7 @@ VITE_GRAPHQL_URL=https://tms-backend-xxx.onrender.com/graphql
 2. You should see the login page
 3. Login with:
    - Email: `admin@tms.com`
-   - Password: `admin123`
+   - Password: `admin@123`
 4. Test all features:
    - View shipments in grid mode
    - Switch to tile view
@@ -227,8 +227,8 @@ VITE_GRAPHQL_URL=https://tms-backend-xxx.onrender.com/graphql
 ### Test Checklist
 
 1. **Authentication**
-   - [ ] Login as admin (admin@tms.com / admin123)
-   - [ ] Login as employee (employee@tms.com / employee123)
+   - [ ] Login as admin (admin@tms.com / admin@123)
+   - [ ] Login as employee (employee@tms.com / employee@123)
    - [ ] Logout works correctly
 
 2. **Views**
@@ -398,8 +398,8 @@ When submitting to the hiring team, provide:
 3. **GitHub Repository**: https://github.com/your-username/tms-app
 4. **Login Credentials**:
    ```
-   Admin: admin@tms.com / admin123
-   Employee: employee@tms.com / employee123
+   Admin: admin@tms.com / admin@123
+   Employee: employee@tms.com / employee@123
    ```
 
 ---

@@ -78,8 +78,8 @@ function Login({ setIsAuthenticated }) {
 
         <div className="login-footer">
           <p><strong>Demo Credentials:</strong></p>
-          <p>Admin: admin@tms.com / admin123</p>
-          <p>Employee: employee@tms.com / employee123</p>
+          <p>Admin: admin@tms.com / admin@123</p>
+          <p>Employee: employee@tms.com / employee@123</p>
         </div>
       </div>
     </div>

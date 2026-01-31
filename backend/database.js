@@ -16,14 +16,14 @@ const initialData = {
     {
       id: '1',
       email: 'admin@tms.com',
-      password: bcrypt.hashSync('admin123', 10),
+      password: bcrypt.hashSync('admin@123', 10),
       name: 'Admin User',
       role: 'ADMIN'
     },
     {
       id: '2',
       email: 'employee@tms.com',
-      password: bcrypt.hashSync('employee123', 10),
+      password: bcrypt.hashSync('employee@123', 10),
       name: 'John Employee',
       role: 'EMPLOYEE'
     }
