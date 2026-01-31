@@ -3,14 +3,14 @@
     {
       "id": "1",
       "email": "admin@tms.com",
-      "password": "admin123",
+      "password": "$2a$10$1dLqg4qKv6V31ZwU4Isee.ksX/tLHOIgJAPBUAkuZ7LnQ5sa0nv1O",
       "name": "Admin User",
       "role": "ADMIN"
     },
     {
       "id": "2",
       "email": "employee@tms.com",
-      "password": "employee123",
+      "password": "$2a$10$VcnC/Jy5OlZk3XUyp1SznOTQIP3UmEneuSQhXavEEFvq.lSVAMUyq",
       "name": "John Employee",
       "role": "EMPLOYEE"
     }
@@ -18,37 +18,45 @@
   "shipments": [
     {
       "id": "1",
-      "shipperName": "Amazon Logistics",
+      "shipperName": "Amazon lokesh Logistics",
       "carrierName": "FedEx Express",
       "pickupLocation": {
-        "address": "N/A",
+        "address": "410 Terry Ave N",
         "city": "Seattle",
         "state": "WA",
-        "zipCode": "00000",
-        "country": "USA"
+        "zipCode": "98109",
+        "country": "USA",
+        "coordinates": {
+          "latitude": 47.6205,
+          "longitude": -122.3493
+        }
       },
       "deliveryLocation": {
-        "address": "N/A",
+        "address": "1600 Amphitheatre Parkway",
         "city": "Mountain View",
         "state": "CA",
-        "zipCode": "00000",
-        "country": "USA"
+        "zipCode": "94043",
+        "country": "USA",
+        "coordinates": {
+          "latitude": 37.422,
+          "longitude": -122.0841
+        }
       },
       "trackingNumber": "TRK001234567",
       "status": "IN_TRANSIT",
       "rate": 450,
       "weight": 125.5,
       "dimensions": {
-        "length": 0,
-        "width": 0,
-        "height": 0,
+        "length": 48,
+        "width": 40,
+        "height": 36,
         "unit": "inches"
       },
-      "estimatedDelivery": "2026-01-30T00:00:00.000Z",
+      "estimatedDelivery": "2026-01-30T10:00:00Z",
       "actualDelivery": null,
-      "notes": "",
+      "notes": "Fragile items - Handle with care",
       "createdAt": "2026-01-25T08:30:00Z",
-      "updatedAt": "2026-01-29T14:14:52.924Z",
+      "updatedAt": "2026-01-27T09:15:00Z",
       "createdBy": "1"
     },
     {
@@ -523,41 +531,7 @@
       "createdAt": "2026-01-27T10:30:00Z",
       "updatedAt": "2026-01-27T10:30:00Z",
       "createdBy": "1"
-    },
-    {
-      "id": "13",
-      "shipperName": "Walmart Supply Chain",
-      "carrierName": "J.B. Hunt",
-      "pickupLocation": {
-        "address": "LANDHI BRANCH",
-        "city": "New York",
-        "state": "NY",
-        "zipCode": "10001",
-        "country": "USA"
-      },
-      "deliveryLocation": {
-        "address": "Janakpuri",
-        "city": "Chittorgarh",
-        "state": "RJ",
-        "zipCode": "312011",
-        "country": "USA"
-      },
-      "trackingNumber": "771956418447 ",
-      "status": "IN_TRANSIT",
-      "rate": 500,
-      "weight": 100,
-      "dimensions": {
-        "length": 0,
-        "width": 0,
-        "height": 0,
-        "unit": "inches"
-      },
-      "estimatedDelivery": "2026-01-31T00:00:00.000Z",
-      "notes": "",
-      "createdAt": "2026-01-29T14:16:22.134Z",
-      "updatedAt": "2026-01-29T14:16:22.134Z",
-      "createdBy": "1"
     }
   ],
-  "shipmentIdCounter": 14
+  "shipmentIdCounter": 13
 }
